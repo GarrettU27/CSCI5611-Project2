@@ -3,9 +3,8 @@ Camera camera;
 
 //Simulation Parameters
 float floor = 500;
-Vec2 gravity = new Vec2(0,400);
+Vec3 gravity = new Vec3(0, 400, 0);
 float radius = 5;
-Vec2 stringTop = new Vec2(200,50);
 float restLen = 10;
 float mass = 1.0; //TRY-IT: How does changing mass affect resting length of the rope? Resting length gets much longer
 float k = 200; //TRY-IT: How does changing k affect resting length of the rope? Resting length gets shorter
@@ -16,4 +15,4 @@ int numRopes = 5;
 Rope ropes[] = new Rope[numRopes];
 
 float obstacleRadius = 20;
-Vec2 obstaclePosition = new Vec2(200, 150);
+Vec3 obstaclePosition = new Vec3(200, 150, 0);
