@@ -2,78 +2,46 @@
 void setup() {
   size(600, 600, P3D);
   camera = new Camera();
+  setInitialCameraPosition();
   surface.setTitle(windowTitle);
-  initScene();
+  cloth = new Cloth();
 }
 
-void initScene(){
-  Vec2 firstTop = new Vec2(140,50);
-  for (int i = 0; i < numRopes; i++) {
-    firstTop.x = firstTop.x + 20;
-    ropes[i] = new Rope(firstTop);
-  }
+void setInitialCameraPosition() {
+  camera.position.x = 114.92473;
+  camera.position.y = -78.1319;
+  camera.position.z = 197.25558;
+  
+  camera.phi = -0.57670313;
+  camera.theta = -5.785404;
 }
 
 void update(float dt){
-  for (int i = 0; i < numRopes; i++) {
-    ropes[i].updateSelf(dt);
-  }
+  cloth.updateSelf(dt);
 }
 
 //Draw the scene: one sphere per mass, one line connecting each pair
 boolean paused = true;
 void draw() {
   background(255);
-  noLights();
-
+  lights();
+  noStroke();
+  
   camera.Update(1.0/frameRate);
   
   if (!paused) {
-    for(int i = 0; i < 20; i++) {
-      update(1/(20*frameRate));
+    for(int i = 0; i < 40; i++) {
+      update(1/(40*frameRate));
     }
   }
   fill(255, 0, 0);
-  circle(obstaclePosition.x, obstaclePosition.y, obstacleRadius * 2);
-  
-  fill(0,0,0);
-  
-  for (int i = 0; i < numRopes; i++) {
-    ropes[i].drawSelf();
-  }
-  
-  fill( 0, 0, 255 );
-  pushMatrix();
-  translate( 0, 0, -50 );
-  box( 20 );
-  popMatrix();
   
   pushMatrix();
-  translate( 0, 0, 50 );
-  box( 20 );
+  translate(obstaclePosition.x, obstaclePosition.y, obstaclePosition.z);
+  sphere(obstacleRadius);
   popMatrix();
   
-  fill( 255, 0, 0 );
-  pushMatrix();
-  translate( -50, 0, 0 );
-  box( 20 );
-  popMatrix();
-  
-  pushMatrix();
-  translate( 50, 0, 0 );
-  box( 20 );
-  popMatrix();
-  
-  fill( 0, 255, 0 );
-  pushMatrix();
-  translate( 0, 50, 0 );
-  box( 20 );
-  popMatrix();
-  
-  pushMatrix();
-  translate( 0, -50, 0 );
-  box( 20 );
-  popMatrix();
+  cloth.drawSelf();
   
   if (paused)
     surface.setTitle(windowTitle + " [PAUSED]");
@@ -86,6 +54,11 @@ void keyPressed(){
   
   if (key == ' ')
     paused = !paused;
+    
+  if (key == 'r') { 
+    cloth.setInitialValues();
+    setInitialCameraPosition();
+  }
 }
 
 void keyReleased()

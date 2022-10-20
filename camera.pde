@@ -28,7 +28,7 @@ class Camera
   }
   
   void Update(float dt)
-  {
+  { 
     theta += turnSpeed * ( negativeTurn.x + positiveTurn.x)*dt;
     
     // cap the rotation about the X axis to be less than 90 degrees to avoid gimble lock
@@ -49,6 +49,7 @@ class Camera
     
     aspectRatio = width / (float) height;
     perspective( fovy, aspectRatio, nearPlane, farPlane );
+    
     camera( position.x, position.y, position.z,
             position.x + forwardDir.x, position.y + forwardDir.y, position.z + forwardDir.z,
             upDir.x, upDir.y, upDir.z );

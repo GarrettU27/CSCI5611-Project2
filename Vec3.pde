@@ -101,3 +101,11 @@ float dot(Vec3 a, Vec3 b){
 Vec3 projAB(Vec3 a, Vec3 b){
   return b.times(a.x*b.x + a.y*b.y + a.z*b.z);
 }
+
+Vec3 cross(Vec3 a, Vec3 b) {
+  float x = a.y * b.z - a.z * b.y;
+  float y = a.x * b.z - a.z * b.x;
+  float z = a.x * b.y - a.y * b.x;
+  
+  return new Vec3(x, y, z);
+}
