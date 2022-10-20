@@ -30,8 +30,8 @@ void draw() {
   camera.Update(1.0/frameRate);
   
   if (!paused) {
-    for(int i = 0; i < 40; i++) {
-      update(1/(40*frameRate));
+    for(int i = 0; i < updatesPerFrame; i++) {
+      update(1/(updatesPerFrame*frameRate));
     }
   }
   fill(255, 0, 0);
