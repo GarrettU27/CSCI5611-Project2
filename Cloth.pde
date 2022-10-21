@@ -119,6 +119,7 @@ public class Cloth {
           Vec3 normal = obstaclePosition.minus(this.positions[i][j]);
           normal.normalize();
           Vec3 bounce = normal.times(dot(normal, this.vels[i][j]));
+          bounce.clampToLength(10);
           this.vels[i][j].subtract(bounce.times(1));
           this.positions[i][j].add(normal.times(0.1 + obstacleRadius - d));
         }

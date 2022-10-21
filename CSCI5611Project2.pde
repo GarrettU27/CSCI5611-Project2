@@ -21,7 +21,7 @@ void update(float dt){
 }
 
 //Draw the scene: one sphere per mass, one line connecting each pair
-boolean paused = true;
+
 void draw() {
   background(255);
   lights();
@@ -64,4 +64,11 @@ void keyPressed(){
 void keyReleased()
 {
   camera.HandleKeyReleased();
+}
+
+void mouseDragged() {
+  if (paused) {
+    obstaclePosition.x += mouseX - pmouseX;
+    obstaclePosition.y += mouseY - pmouseY;
+  }
 }

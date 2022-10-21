@@ -1,6 +1,7 @@
 String windowTitle = "Swinging Rope";
 Camera camera;
 Cloth cloth;
+boolean paused = true;
 
 int updatesPerFrame = 20;
 
