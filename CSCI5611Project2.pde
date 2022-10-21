@@ -58,6 +58,7 @@ void keyPressed(){
   if (key == 'r') { 
     cloth.setInitialValues();
     setInitialCameraPosition();
+    obstaclePosition = new Vec3(50, 50, 50);
   }
 }
 

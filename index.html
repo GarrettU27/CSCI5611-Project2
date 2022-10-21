@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>CSCI 5611 Project 1</title>
+    <title>CSCI 5611 Project 2</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles.css" />
@@ -22,61 +22,94 @@
     <![endif]-->
     <h1>Introduction</h1>
     <p>
-      I am Garrett Udstrand (<a href="mailto:udstr013@umn.edu">udstr013@umn.edu</a>).
-      This is my website submission for Project 2 in CSCI 5611. The
-      example video of the project can be viewed below.
+      I am Garrett Udstrand (<a href="mailto:udstr013@umn.edu"
+        >udstr013@umn.edu</a
+      >). This is my website submission for Project 2 in CSCI 5611. The example
+      video of the project can be viewed below.
     </p>
 
     <video width="800" controls>
-      <source src="SpaceSimulation.mp4" type="video/mp4" />
+      <source src="cloth.mp4" type="video/mp4" />
     </video>
 
     <h1>Features</h1>
     <p>
-        My submission, this time around, is pretty bare bones. I simply simulate a cloth
-        in a 3D environment and give the user a camera to navigate the environment. It runs pretty
-        fast, only dipping to 45 fps at lowest  on my laptop, which doesn't have the
-        greatest of GPUs.
+      My submission, this time around, is pretty bare bones. I simply simulate a
+      cloth in a 3D environment and give the user a camera to navigate the
+      environment. It runs pretty fast, only dipping to 45 fps at lowest on my
+      laptop, which doesn't have the greatest of GPUs.
     </p>
     <p>
-        Running the project will start you off with a cloth in front of you and an obstacle underneath
-        it. Hitting the spacebar allows updates to happen and makes the cloth fall. Hitting 'r' resets
-        the simulation. The WASD keys are used to move the camera around, and you can rotate the camera
-        by using the arrow keys.
+      Running the project will start you off with a cloth in front of you and an
+      obstacle underneath it. Hitting the spacebar allows updates to happen and
+      makes the cloth fall. Hitting 'r' resets the simulation. The WASD keys are
+      used to move the camera around, and you can rotate the camera by using the
+      arrow keys. Dragging the mouse around while paused allows you to move the
+      obstacle, so you can try out the simulation against many different
+      obstacle positions.
     </p>
 
     <h1>Project Features I Attempted</h1>
     <h2>Multiple Ropes</h2>
     <p>
       This one was required, so, of course, I implemented it. As you will see in
-      the next section, I extended this multiple rope simulation to be a full-fledged
-      cloth simulation, so there are no literal ropes being displayed in the simulation,
-      just rope calculations being used implicitly in the cloth simulation.
+      the next section, I extended this multiple rope simulation to be a
+      full-fledged cloth simulation, so there are no literal ropes being
+      displayed in the simulation, just rope calculations being used implicitly
+      in the cloth simulation.
     </p>
     <h2>Cloth Simulation</h2>
     <p>
-      I added horizontal ropes as the instructions directed and was able to create a
-      simulated version of a cloth. I use a fairly standard example, with the cloth
-      falling onto a ball and making satisfying cloth-like motions due to hitting the
-      ball. I placed the ball slightly off center, so you get this really interesting
-      side-to-side movement in the cloth that reminds me of clothes flowing in the
-      breeze.
+      I added horizontal ropes as the instructions directed and was able to
+      create a simulated version of a cloth. I use a fairly standard example,
+      with the cloth falling onto a ball and making satisfying cloth-like
+      motions due to hitting the ball. I placed the ball slightly off center, so
+      you get this really interesting side-to-side movement in the cloth that
+      reminds me of clothes flowing in the breeze. This cloth simulation is seen
+      throughout the video.
     </p>
     <h2>3D Simulation</h2>
     <p>
-      The simulation is done in 3D and a user can use the camera to move around it.
-      You simply hit the WASD keys to move, and the arrow keys to change the camera's
-      rotation. It's almost like a video game, but using arrow keys rather than the 
-      mouse.
+      The simulation is done in 3D and a user can use the camera to move around
+      it. You simply hit the WASD keys to move, and the arrow keys to change the
+      camera's rotation. It's almost like a video game, but using arrow keys
+      rather than the mouse. You can see the camera being used to get different
+      angles of the 3D environment at approximately 10 seconds in and 25 seconds
+      in. You can see the camera being used more dynamically below, with it
+      being moved around while the simulation is going, just to see what the
+      cloth looks like from different angles.
+      <video width="800" controls>
+        <source src="camera.mp4" type="video/mp4" />
+      </video>
+    </p>
+    <h2>User Interaction</h2>
+    <p>
+      By dragging the mouse around, you can move the obstacle to see the cloth
+      interact with it in different ways. I only allow you to move it when the
+      simulation is paused, however, as moving the ball while the cloth is
+      moving can lead to glitchy behavior. I should also note that if you move
+      the ball so that the cloth and the ball are inside one another, the
+      simulation will also glitch out and break. You can see the ball moved at
+      approximately 19 seconds into the video and 36 seconds into the video. You
+      can see an example of me breaking the simulation below.
+      <video width="800" controls>
+        <source src="break.mp4" type="video/mp4" />
+      </video>
+    </p>
+    <h2>Realistic Speed</h2>
+    <p>
+      I tried to match up my cloth's speed to something like a big, billowy
+      blanket. I wanted the cloth to feel weighty and comfy when seen in
+      movement, which I think I certainly achieved, but that's subjective, I
+      guess.
     </p>
 
     <h1>Code</h1>
     <p>
       The simulation was written using
-      <a href="https://processing.org/">processing</a>. The
-      in-class rope activity was used as a base for creating the
-      simulation, but it has been significantly modified. Almost none of the
-      original code remains.
+      <a href="https://processing.org/">processing</a>. The in-class rope
+      activity was used as a base for creating the simulation, but it has been
+      significantly modified. Almost none of the original code remains.
     </p>
     <p>
       The source code can be
@@ -91,31 +124,58 @@
     <h1>Difficulties</h1>
     <h2>Collision with the Sphere</h2>
     <p>
-        While we have discussed collisions quite a bit in class, it's a bit
-        more difficult to get good looking collisions with the cloth. It
-        deforms and kind of stretches and this can be difficult to work with.
-        If the cloth deforms too much on the sphere, and the push is not strong
-        enough, the sphere will show through the cloth and it will look bad. However,
-        setting too strong of forces can make the cloth float. It can also make it
-        jitter, which is a problem still kind of present in my final submission.
+      While we have discussed collisions quite a bit in class, it's a bit more
+      difficult to get good looking collisions with the cloth. It deforms and
+      kind of stretches and this can be difficult to work with. If the cloth
+      deforms too much on the sphere, and the push is not strong enough, the
+      sphere will show through the cloth and it will look bad. However, setting
+      too strong of forces can make the cloth float. It can also make it jitter,
+      which is a problem still kind of present in my final submission.
     </p>
     <p>
-        Overall, it mainly came down to using the same basic logic, but tinkering
-        quite a bit with the parameters until the collision looked good and produced
-        a good looking cloth movement.
+      A solution I was interested in pursuing was testing the intersection
+      between triangles and the sphere rather than between individual points.
+      Because there are configurations where the individual points of a triangle
+      will be outside the sphere, but the actual rendered triangle is still
+      clipping it. To test this intersection, you'd simply treat the triangle as
+      a plane and use the
+      <a
+        href="https://en.wikipedia.org/wiki/Plane_(geometry)#Distance_from_a_point_to_a_plane"
+      >
+        distance from a point to a plane
+      </a>
+      equation. If the distance calculated is less than the radius of the sphere
+      plus some tuning value, you push the plane outwards until that distance is
+      greater than those two values. The problem with that solution, though, is
+      it's really hard to implement pushing the plane outwards. How exactly you
+      change the points, so that they remain relationally the same, but still
+      move the distance of the plane from the center of the obstacle out, is not
+      exactly clear, and my linear algebra knowledge was not good enough to make
+      it happen in time.
+    </p>
+    <p>
+      As you probably saw in the features section, the collision system sort of
+      breaks if the obstacle being collided does not start on the outside of the
+      sphere. I spent forever debugging this, and I couldn't come to a
+      particularly satisfying conclusion on it.
+    </p>
+    <p>
+      Overall, it mainly came down to using the same basic logic, but tinkering
+      quite a bit with the parameters until the collision looked good and
+      produced a good looking cloth movement.
     </p>
     <h2>Non-Angular Cloth</h2>
     <p>
-        If you don't have enough polygons to render the cloth, it can look very
-        angular and it breaks the immersion quite a bit. The problem is that adding
-        too many polygons can give your computer quite the hit, and will reduce
-        how smooth you can make the overall motion.
+      If you don't have enough polygons to render the cloth, it can look very
+      angular and it breaks the immersion quite a bit. The problem is that
+      adding too many polygons can give your computer quite the hit, and will
+      reduce how smooth you can make the overall motion.
     </p>
     <p>
-        Just like before, there was no supremely elegant solution to this problem,
-        and, if there is one, I simply didn't have the time to work it out. Instead,
-        I just adjusted the parameters until I had a good balance between the amount
-        of polygons and the smoothness of motion.
+      Just like before, there was no supremely elegant solution to this problem,
+      and, if there is one, I simply didn't have the time to work it out.
+      Instead, I just adjusted the parameters until I had a good balance between
+      the amount of polygons and the smoothness of motion.
     </p>
 
     <script src="" async defer></script>
