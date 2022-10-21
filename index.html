@@ -177,6 +177,18 @@
       Instead, I just adjusted the parameters until I had a good balance between
       the amount of polygons and the smoothness of motion.
     </p>
+    <h2>Computing Proper Normal Vectors</h2>
+    <p>
+      I made attempts to include both drag and more proper lighting in this
+      simulation, but I had to scrap both because they were glitching out on me,
+      which I believe was due to the cross product. For the drag and for the
+      lighting, we want our normal in a particular direction, so that the
+      calculations work properly. However, the cross product only chooses its
+      direction via the right-hand rule, and I had situations where the cross
+      product would suddenly flip, and cause either the lighting or the drag to
+      wig out and look bad. Perhaps, with more debugging, I could've fixed it,
+      but I decided to pursue other avenues to get a nice simulation.
+    </p>
 
     <script src="" async defer></script>
   </body>
